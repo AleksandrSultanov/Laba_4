@@ -1,7 +1,7 @@
 <?php
     try
     {
-        $connection = new PDO('mysql:host=localhost;dbname=db_users;charset=utf8', 'root', '');
+        $connection = new PDO('mysql:host=localhost;dbname=auto;charset=utf8', 'root', '');
         if (empty($_POST['mark']) and empty($_POST['model']) and empty($_POST['year']) and empty($_POST['cost']) and empty($_POST['mileage']))
             exit ("Поля не заполнены!");
         $mark    = htmlspecialchars($_POST['mark']);
