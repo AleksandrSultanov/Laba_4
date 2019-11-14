@@ -1,9 +1,11 @@
 <?php
 function show ()
 {
+    require 'connect.php';
     $count = 0;
     try {
-        $connection = new PDO('mysql:host=localhost;dbname=auto;charset=utf8', 'root', '');
+        $connect = connect();
+
         echo '<table class="table">';
         echo '<thead>';
         echo '<tr scope="row">';
@@ -15,7 +17,7 @@ function show ()
         echo '<td>' . "Пробег (км)" . '</td>';
         echo '</tr>';
         echo '</thead>';
-        foreach ($connection->query('SELECT * from car') as $row)
+        foreach ($connect->query('SELECT * from car') as $row)
         {
             echo '<tr scope="row">';
             echo '<td>' . ++$count . '</td>';
@@ -26,7 +28,7 @@ function show ()
             echo '</tr>';
         }
         echo '</table>';
-        $connection = null;
+        $connect = null;
     } catch (PDOException $e) {
         print "Error!: " . $e->getMessage() . "<br/>";
         die();

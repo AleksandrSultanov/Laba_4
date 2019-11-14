@@ -1,7 +1,8 @@
 <?php
+    require 'connect.php';
     try
     {
-        $connection = new PDO('mysql:host=localhost;dbname=auto;charset=utf8', 'root', '');
+        $connect = connect();
         if (empty($_POST['mark']) and empty($_POST['model']) and empty($_POST['year']) and empty($_POST['cost']) and empty($_POST['mileage']))
             exit ("Поля не заполнены!");
         $mark    = htmlspecialchars($_POST['mark']);
@@ -10,7 +11,7 @@
         $cost    = htmlspecialchars($_POST['cost']);
         $mileage = htmlspecialchars($_POST['mileage']);
         $query = 'INSERT INTO car VALUES (NULL, :mark, :model, :year, :cost, :mileage)';
-        $car = $connection->prepare($query);
+        $car = $connect->prepare($query);
 
         $car->execute(['mark' => $mark, 'model' => $model, 'year' => $year, 'cost' =>$cost, 'mileage' => $mileage]);
         Header ("Location: index.php");
