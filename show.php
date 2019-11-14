@@ -3,7 +3,7 @@ function show ()
 {
     $count = 0;
     try {
-        $connection = new PDO('mysql:host=localhost;dbname=db_users;charset=utf8', 'root', '');
+        $connection = new PDO('mysql:host=localhost;dbname=auto;charset=utf8', 'root', '');
         echo '<table class="table">';
         echo '<thead>';
         echo '<tr scope="row">';
@@ -27,7 +27,6 @@ function show ()
         }
         echo '</table>';
         $connection = null;
-        //$_POST['count'] = $count;
     } catch (PDOException $e) {
         print "Error!: " . $e->getMessage() . "<br/>";
         die();
